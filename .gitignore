@@ -1,0 +1,13 @@
+output/
+test.ipynb
+__pycache__/
+src/utils/check_memory.py
+.idea
+t5_fine_tuned/
+t5_tokenizer_fine_tuned/
+qa_model/
+qa_tokenizer/
+models/
+venv
+.ipynb_checkpoints/
+misc/spancat.ipynb

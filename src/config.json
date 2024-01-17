@@ -1,0 +1,31 @@
+{
+  "lora_config": {
+    "r": 64,
+    "lora_alpha": 32,
+    "target_modules": ["q", "v"],
+    "lora_dropout": 0.1,
+    "bias": "lora_only"
+  },
+  "prefix_tuning_config": {
+    "inference_mode": false,
+    "num_virtual_tokens": 20
+  },
+  "optimizer": {
+    "scale_parameter": true,
+    "relative_step": true,
+    "warmup_init": true,
+    "lr": null
+  },
+  "model": {
+    "pretrained_model_name_or_path": "t5-base",
+    "return_dict": true
+  },
+  "tokenizer": {
+    "padding": "max_length",
+    "truncation": true,
+    "pad_to_max_length": true,
+    "add_special_tokens": true
+  },
+  "Q_LEN": 512,
+  "T_LEN": 32
+}
