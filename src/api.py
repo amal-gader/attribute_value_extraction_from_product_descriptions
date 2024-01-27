@@ -6,12 +6,12 @@ from pydantic import BaseModel
 from transformers import T5ForConditionalGeneration, T5TokenizerFast
 
 from train import config
+
 path = os.environ.get('MODEL_PATH')
 id = "LORA_2023103114"
 device = "cuda:0"
 model = T5ForConditionalGeneration.from_pretrained(f"{path}/models/{id}").to(device)
 tokenizer = T5TokenizerFast.from_pretrained(f"{path}/models/tokenizer_{id}")
-
 
 app = FastAPI()
 
@@ -34,7 +34,12 @@ class InferenceRequest(BaseModel):
     task_prefix: str
 
 
-@app.get("/predict")
+class Output(BaseModel):
+    answer: str
+
+
+@app.post("/predict", response_model=Output)
 def predict(request: InferenceRequest):
     result = inference(request.task_prefix, request.question, request.context, request.prompt)
-    return {"predicted_answer": result}
+    output = Output(answer=result)
+    return output
