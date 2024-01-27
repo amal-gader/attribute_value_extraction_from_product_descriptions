@@ -43,8 +43,7 @@ class Test:
         question_tokenized = self.tokenizer(input_text, max_length=config['Q_LEN'], **config['tokenizer'])
         with torch.no_grad():
             input_ids = torch.tensor(question_tokenized["input_ids"], dtype=torch.long).to(self.device).unsqueeze(0)
-            attention_mask = torch.tensor(question_tokenized["attention_mask"], dtype=torch.long).to(
-                self.device).unsqueeze(0)
+            attention_mask = torch.tensor(question_tokenized["attention_mask"], dtype=torch.long).to(self.device).unsqueeze(0)
             outputs = self.model.generate(input_ids=input_ids, attention_mask=attention_mask)
             predicted_answer = self.tokenizer.decode(outputs.flatten(), skip_special_tokens=True)
         return predicted_answer
