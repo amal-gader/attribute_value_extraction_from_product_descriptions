@@ -14,7 +14,7 @@ from transformers import Adafactor
 from transformers import T5ForConditionalGeneration, T5TokenizerFast
 from transformers.optimization import AdafactorSchedule
 
-from src.data_processing.dataset import QA_Dataset
+from data_processing.dataset import QA_Dataset
 from utils.helpers import print_number_of_trainable_model_parameters, console, insert_augmented_samples
 from utils.logger import training_logger, validation_logger
 
