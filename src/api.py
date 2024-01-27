@@ -1,10 +1,12 @@
+import os
+
 import torch
 from fastapi import FastAPI
 from pydantic import BaseModel
 from transformers import T5ForConditionalGeneration, T5TokenizerFast
 
 from train import config
-path = "/master_thesis/thesis-amel-gader"
+path = os.environ.get('MODEL_PATH')
 id = "LORA_2023103114"
 device = "cuda:0"
 model = T5ForConditionalGeneration.from_pretrained(f"{path}/models/{id}").to(device)
