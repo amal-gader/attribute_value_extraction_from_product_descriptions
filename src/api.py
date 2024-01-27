@@ -4,11 +4,11 @@ from pydantic import BaseModel
 from transformers import T5ForConditionalGeneration, T5TokenizerFast
 
 from train import config
-
+path = "/master_thesis/thesis-amel-gader"
 id = "LORA_2023103114"
 device = "cuda:0"
-model = T5ForConditionalGeneration.from_pretrained(f"models/{id}").to(device)
-tokenizer = T5TokenizerFast.from_pretrained(f"models/tokenizer_{id}")
+model = T5ForConditionalGeneration.from_pretrained(f"{path}/models/{id}").to(device)
+tokenizer = T5TokenizerFast.from_pretrained(f"{path}/models/tokenizer_{id}")
 
 
 app = FastAPI()
