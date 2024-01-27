@@ -7,7 +7,7 @@ TOKENIZER = T5TokenizerFast.from_pretrained("t5-base")
 new_tokens = ['®', 'Ø', '°']
 TOKENIZER.add_tokens(new_tokens)
 
-with open("../config.json", 'r') as config_file:
+with open("src/config.json", 'r') as config_file:
     config = json.load(config_file)
 
 prefixes = {'bf': "Beantworten Sie die folgende Frage mit true oder false. \n",
