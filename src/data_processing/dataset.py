@@ -1,3 +1,5 @@
+import os
+
 import torch
 import json
 from torch.utils.data import Dataset
@@ -7,7 +9,10 @@ TOKENIZER = T5TokenizerFast.from_pretrained("t5-base")
 new_tokens = ['®', 'Ø', '°']
 TOKENIZER.add_tokens(new_tokens)
 
-with open("src/config.json", 'r') as config_file:
+script_dir = os.path.dirname(os.path.realpath(__file__))
+config_path = os.path.join(script_dir, "../config.json")
+
+with open(config_path, 'r') as config_file:
     config = json.load(config_file)
 
 prefixes = {'bf': "Beantworten Sie die folgende Frage mit true oder false. \n",
