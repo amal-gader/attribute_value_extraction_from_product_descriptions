@@ -34,7 +34,7 @@ class InferenceRequest(BaseModel):
     task_prefix: str
 
 
-@app.post("/predict")
+@app.get("/predict")
 def predict(request: InferenceRequest):
     result = inference(request.task_prefix, request.question, request.context, request.prompt)
     return {"predicted_answer": result}
