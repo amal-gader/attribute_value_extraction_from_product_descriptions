@@ -5,7 +5,7 @@ import pandas as pd
 from rich.console import Console
 from sklearn.model_selection import train_test_split
 from tqdm import tqdm
-from src.data_processing.data_augmentation import DataAugment
+from data_processing.data_augmentation import DataAugment
 
 PERIOD_TOKEN = '</s>'
 console = Console(record=True)
